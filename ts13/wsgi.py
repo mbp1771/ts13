@@ -11,10 +11,10 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-from sol.ext_data import b200
-
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ts13.settings')
 
 application = get_wsgi_application()
+
+from sol.ext_data import b200
 
 b200()
