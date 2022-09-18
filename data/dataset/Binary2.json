@@ -1,0 +1,27 @@
+{
+	"name": "Binary2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AmazonS31",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"FN": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "ts13",
+				"folderPath": "media/albums",
+				"fileName": {
+					"value": "@dataset().FN",
+					"type": "Expression"
+				}
+			}
+		}
+	}
+}
