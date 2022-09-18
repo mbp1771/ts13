@@ -1,0 +1,12 @@
+{
+	"name": "S3data",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=musicts13;EndpointSuffix=core.windows.net;",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDEyNDY2OTlBLTE1NDctNENCNi1CNjc5LUI5RjgyNkVCOEJEMV9kYzAzMGVmMi0yYTQzLTRhZjQtOTE5MS1mMzZjYzNkYmVkNzciDQp9"
+		}
+	}
+}
