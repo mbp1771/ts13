@@ -196,6 +196,11 @@ table.artist {
     font-size: xx-small;
 }
 
+abbr {
+    text-decoration: none;
+    cursor: auto;
+}
+
 /* artist & album detail
 --------------------------------------------*/
 
