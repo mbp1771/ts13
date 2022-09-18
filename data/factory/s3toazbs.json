@@ -1,0 +1,9 @@
+{
+	"name": "s3toazbs",
+	"location": "southindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "2fa3395c-10ec-4ee2-ab55-3d1b3273979d",
+		"tenantId": "084a029e-1435-40bc-8201-87ec1b251fb3"
+	}
+}
