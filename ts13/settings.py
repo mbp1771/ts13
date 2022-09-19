@@ -14,7 +14,6 @@ import os
 from pathlib import Path
 
 from django.apps import apps
-from azure.identity import DefaultAzureCredential
 
 from dotenv import load_dotenv
 
@@ -150,10 +149,6 @@ AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_STORAGE_BUCKET_NAME = 'ts13'
 AWS_S3_REGION_NAME = 'ap-south-1'
 AWS_S3_SIGNATURE_VERSION = 's3v4'"""
-
-AZURE_ACCOUNT_NAME = 'musicts13'
-AZURE_CONTAINER = 'ts13'
-AZURE_TOKEN_CREDENTIAL = DefaultAzureCredential()
 
 DEFAULT_FILE_STORAGE = 'ts13.storage_backends.MediaStorage'
 

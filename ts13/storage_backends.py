@@ -5,7 +5,11 @@ class MediaStorage(S3Boto3Storage):
     file_overwrite = False"""
 
 from storages.backends.azure_storage import AzureStorage
+from azure.identity import DefaultAzureCredential
 
 class MediaStorage(AzureStorage):
+    account_name = 'musicts13'
+    azure_container = 'ts13'
+    token_credential = DefaultAzureCredential()
     location = 'media'
-    file_overwrite = False
+    overwrite_files = False
