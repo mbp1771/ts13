@@ -29,7 +29,7 @@ BASE_URL = 'https://ts13.azurewebsites.net/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ts13.azurewebsites.net', '169.254.129.4']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ts13.azurewebsites.net', '169.254.129.*']
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
