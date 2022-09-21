@@ -144,7 +144,6 @@ STATIC_ROOT = BASE_DIR / 'static'
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-
 DEFAULT_FILE_STORAGE = 'ts13.storage_backends.MediaStorage'
 
 MEDIA_URL = 'media/'
@@ -155,6 +154,5 @@ MEDIA_ROOT = 'media'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 UPLOADED_FILES_USE_URL = True
