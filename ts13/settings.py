@@ -19,7 +19,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-if 'WEBSITE_HOSTNAME' in os.environ:
+if 'HOSTNAME' in os.environ:
     from .production_settings import *
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
