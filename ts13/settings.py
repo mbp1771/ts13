@@ -29,7 +29,7 @@ BASE_URL = 'https://ts13.azurewebsites.net/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
@@ -137,17 +137,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATIC_ROOT = BASE_DIR / 'static'
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
 DEFAULT_FILE_STORAGE = 'ts13.storage_backends.MediaStorage'
 
-MEDIA_URL = 'media/'
+AZURE_ACCOUNT_NAME = os.environ['STORAGE_ACCOUNT_NAME']
+AZURE_CONTAINER = os.environ['STORAGE_CONTAINER_NAME']
 
+MEDIA_URL = 'media/'
 MEDIA_ROOT = 'media'
 
 # Default primary key field type
