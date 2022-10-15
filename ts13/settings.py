@@ -13,39 +13,24 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
-from django.apps import apps
-
 from dotenv import load_dotenv
-
 load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-BASE_URL = 'https://ts13.azurewebsites.net/'
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-
-if 'HOSTNAME' in os.environ:
-    from .production_settings import *
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 # Application definition
-
 INSTALLED_APPS = [
-    'whitenoise.runserver_nostatic',
     'sol.apps.SolConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'storages',
     'imagekit',
@@ -81,6 +66,8 @@ TEMPLATES = [
         },
     },
 ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 WSGI_APPLICATION = 'ts13.wsgi.application'
 
@@ -123,13 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-GB'
-
 TIME_ZONE = 'Asia/Kolkata'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 
@@ -137,7 +120,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = (BASE_DIR / 'static', )
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True
+WHITENOISE_MANIFEST_STRICT = False
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
