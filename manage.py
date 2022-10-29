@@ -2,8 +2,9 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import datetime
+from django.utils import timezone
 from dotenv import load_dotenv
-
 
 def main():
     """Run administrative tasks."""
@@ -24,6 +25,10 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+    if timezone.datetime.today().weekday() == 1:
+        from sol.ext_data import b200
+
+        b200()
 
 
 if __name__ == '__main__':
