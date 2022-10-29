@@ -13,6 +13,9 @@ def main():
     if not 'WEBSITE_HOSTNAME' in os.environ:
         load_dotenv('./.env')
 
+    # When running on Azure App Service you should use the production settings.
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ts13.production' if 'WEBSITE_HOSTNAME' in os.environ else 'ts13.development')
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
