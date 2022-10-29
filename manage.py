@@ -2,7 +2,6 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
-import datetime
 from django.utils import timezone
 from dotenv import load_dotenv
 
@@ -14,8 +13,6 @@ def main():
     if not 'WEBSITE_HOSTNAME' in os.environ:
         load_dotenv('./.env')
 
-    # When running on Azure App Service you should use the production settings.
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ts13.production' if 'WEBSITE_HOSTNAME' in os.environ else 'ts13.development')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -25,6 +22,7 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+
     if timezone.datetime.today().weekday() == 1:
         from sol.ext_data import b200
 

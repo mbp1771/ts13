@@ -1,9 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-import django
-django.setup()
-
 from .models import Artist, Position
 
 artists = Artist.objects.all()
