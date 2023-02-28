@@ -1,0 +1,74 @@
+{% extends "base_generic.html" %}
+<head>
+  {% block title %}<title>{{ artist.name }}</title>{% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?{% now 'U' %}">
+</head>
+{% load tags %}
+{% block content %}
+  <h2 class="artist"><span>{{ artist.name }}</span></h2>
+  <section class="container3">
+    <article class="item2">
+      <div><img alt="{{ artist.name }}" src="{{ MEDIA_ROOT }}{{ artist.photo.url }}" class="artist"/></div>
+      <dl>
+        <div><dt>Full Name:&nbsp;</dt><dd>{{ artist.full_name }}</dd></div>
+        <div><dt>Date of birth:&nbsp;</dt><dd>{{ artist.date_of_birth }}</dd></div>
+      </dl>
+    </article>
+    <article class="item3">
+      <h3 class="artist"><span>Albums</span></h3>
+      {% if albums %}
+        <ul class="container2">
+          {% for album in albums %}
+            <li class="item">
+              <ul>
+                <li><img alt="{{ album.name }} ({{ album.release_date.year }}) album cover" src="{{ MEDIA_ROOT }}{{ album.cover.url }}" class="album_small"/></li>
+                <li><strong><a href="{{ album.get_absolute_url }}">{{ album.name }}</a></strong></li>
+                <dl>
+                  <dt>Release Date:&nbsp;</dt><dd>{{ album.release_date }}</dd>
+                </dl>
+                {% if album.name|filter_by_album %}
+                  <table class="artist">
+                    <tr>
+                      <th>Chart</th>
+                      <th>Peak</th>
+                      <th><abbr title='Weeks on Chart'>WoC</abbr></th>
+                    </tr>
+                    {% for position in album.name|filter_by_album %}
+                      <tr>
+                        <td><img alt="Flag of {{ position.chart.country }}" src="{{ MEDIA_ROOT }}{{ position.chart.flag.url }}"/></td>
+                        <td>{{ position.peak_position }}</td>
+                        <td>{{ position.weeks_on_chart }}</td>
+                      </tr>
+                    {% endfor %}
+                  </table>
+                {% else %}
+                  <p><span>There are no chart entries for this album.</span></p>
+                {% endif %}
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p><span>There are no albums.</span></p>
+      {% endif %}
+    </article>
+  </section>
+{% endblock %}
+{% block pagination %}
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if albums.has_previous %}
+          <a href="{% url 'artist-detail' artist.name albums.previous_page_number %}">previous</a>
+        {% endif %}
+        <span class="page-current">
+          Page {{ albums.number }} of {{ albums.paginator.num_pages }}
+        </span>
+        {% if albums.has_next %}
+          <a href="{% url 'artist-detail' artist.name albums.next_page_number %}">next</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}

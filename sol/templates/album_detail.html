@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+<head>
+  {% block title %}<title>{{ album.name }}</title>{% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?{% now 'U' %}">
+</head>
+{% block content %}
+  <h2 class="album"><span>{{ album.name }}</span></h2>
+  <section class="container3">
+    <article class="item2">
+      <div><img alt="{{ album.name }} ({{ album.release_date.year }})" src="{{ MEDIA_ROOT }}{{ album.cover.url }}" class="album"/></div>
+      <dl>
+        <div><dt>Artist:&nbsp;</dt><dd><a href="{{ album.artist.get_absolute_url }}">{{ album.artist }}</a></dd></div>
+        <div><dt>Release Date:&nbsp;</dt><dd>{{ album.release_date }}</dd></div>
+      </dl>
+    </article>
+    <article class="item3">
+      <h3 class="album"><span>Charts</span></h3>
+      {% if positions %}
+        <ul class="container2">
+          {% for position in positions %}
+            <li class="item">
+              <ul>
+                <li><strong><a href="#">{{ position.chart.name }} (<img alt="Flag of {{ position.chart.country }}" src="{{ MEDIA_ROOT }}{{ position.chart.flag.url }}" class="flag"/>)</a></strong></li>
+                <dl>
+                  <div><dt>Peak:&nbsp;</dt><dd>{{ position.peak_position }}</dd></div>
+                  <div><dt>Weeks on Chart:&nbsp;</dt><dd>{{ position.weeks_on_chart }}</dd></div>
+                </dl>
+              </ul>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p><span>There are no charts yet.</span></p>
+      {% endif %}
+    </article>
+  </section>
+{% endblock %}
+{% block pagination %}
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if positions.has_previous %}
+          <a href="{% url 'album-detail' album.name positions.previous_page_number %}">previous</a>
+        {% endif %}
+        <span class="page-current">
+          Page {{ positions.number }} of {{ positions.paginator.num_pages }}
+        </span>
+        {% if positions.has_next %}
+          <a href="{% url 'album-detail' album.name positions.next_page_number %}">next</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}

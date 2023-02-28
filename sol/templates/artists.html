@@ -1,0 +1,48 @@
+{% extends "base_generic.html" %}
+<head>
+  {% block title %}<title>Artists</title>{% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?{% now 'U' %}">
+</head>
+{% load tags %}
+{% block content %}
+  <section>
+    <h2 class="artist_small"><span>Artists</span></h2>
+    {% if artists %}
+      <ul class="container">
+        {% for artist in artists %}
+          <li class="item">
+            <ul>
+              <li><img src="{{ MEDIA_ROOT }}{{ artist.photo.url }}" alt ="{{ artist.name }}" class="artist_small"></li>
+              <li><strong><a href="{{ artist.get_absolute_url }}">{{ artist.name }}</a></strong></li>
+              <dl>
+                <div><dt>Full Name:&nbsp;</dt><dd>{{ artist.full_name }}</dd></div>
+                <div><dt>Date of birth:&nbsp;</dt><dd>{{ artist.date_of_birth }}</dd></div>
+                <div><dt>Number of albums:&nbsp;</dt><dd>{{ num_albums|num_aba:artist.name }}</dd></div>
+              </dl>
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>There are no artists.</p> 
+    {% endif %}
+  </section>
+{% endblock %}
+{% block pagination %}
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+        {% if artists.has_previous %}
+          <a href="{% url 'artists' artists.previous_page_number %}">previous</a>
+        {% endif %}
+        <span class="page-current">
+          Page {{ artists.number }} of {{ artists.paginator.num_pages }}
+        </span>
+        {% if artists.has_next %}
+          <a href="{% url 'artists' artists.next_page_number %}">next</a>
+        {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %}

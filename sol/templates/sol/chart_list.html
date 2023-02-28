@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+<head>
+  {% block title %}<title>Charts</title>{% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?{% now 'U' %}">
+</head>
+{% load tags %}
+{% block content %}
+  <section>
+    <h2 class="charts"><span>Charts</span></h2>
+    {% if chart_list %}
+      <ul class="container4">
+        {% for chart in chart_list %}
+          <li class="item">
+            <ul>
+              <li><strong><a href="{{ chart.get_absolute_url }}">{{ chart.name }} (<img alt="Flag of {{ chart.country }}" src="{{ MEDIA_ROOT }}{{ chart.flag.url }}"/>)</a></strong></li>
+              {% if chart.name|filter_by_chart %}
+                <table class="charts">
+                  <thead>
+                    <tr>
+                      <th>Album</th>
+                      <th>Peak</th>
+                      <th><abbr title='Weeks on Chart'>WoC</abbr></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for position in chart.name|filter_by_chart %}
+                      <tr>
+                        <td>{{ position.album }}</td>
+                        <td>{{ position.peak_position }}</td>
+                        <td>{{ position.weeks_on_chart }}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              {% else %}
+                <p><span>There are no entries for this chart.</span></p>
+              {% endif %}
+            </ul>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p><span>There are no charts.</span></p>
+    {% endif %}
+  </section>
+{% endblock %}

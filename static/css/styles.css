@@ -1,0 +1,445 @@
+/*  box model fix
+--------------------------------------------*/
+
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+/*  float fix
+--------------------------------------------*/
+
+.clearfix:after {
+    content: ".";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+/*  body
+--------------------------------------------*/
+
+body {
+    padding: 16px;
+    color: #D32427;
+}
+
+/* header
+--------------------------------------------*/
+
+header {
+    font-size: 0;
+}
+
+header a {
+    color: #D32427;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+/* website name
+--------------------------------------------*/
+
+.web-name {
+    float: left;
+    font-size: 40px;
+    margin: 0;
+}
+
+/* nagivation bar
+--------------------------------------------*/
+
+.navbar {
+    font-size: 24px;
+    display: inline;
+    float: right;
+    text-align: center;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.navbar li {
+    float: left;
+    padding: 10px;
+}
+
+.navbar li a:hover {
+    color: #C48066;
+}
+
+.navbar .icon {
+    display: none;
+}
+
+/* Content
+--------------------------------------------*/
+
+
+h2 {
+    text-align: center;
+    padding: 20%;
+}
+
+h2 span, h3 span, p span{
+    background-color: rgba(232, 242, 244, 0.8);
+}
+
+ul {
+    list-style: none;
+}
+
+li a {
+    text-decoration: none;
+}
+
+/* artist, album & charts grid 
+--------------------------------------------*/
+
+h2.artist_small, h2.album_small, h2.charts {
+    padding: 0;
+    margin: 5px;
+}
+
+.container, .container2, .container4 {
+    display: grid;
+    justify-content: space-evenly;
+    align-content: space-evenly;
+    justify-items: center;
+    align-items: center;
+    gap: 5% 5%;
+}
+
+.container {
+    grid: auto-flow 1.5fr / 1fr 1fr 1fr 1fr 1fr;
+}
+
+.container4 {
+    grid: auto-flow 1fr / 1fr 1fr 1fr 1fr;
+}
+
+img.artist_small, img.album_small {
+    width: 70%;
+    height: auto;
+}
+
+img.charts {
+    width: 32px;
+}
+
+ul.container, ul.container4, .item > ul {
+    padding: 0;
+}
+
+.item {
+    background-color: rgba(232, 242, 244, 0.8);
+    padding: 3%;
+    transition: transform .2s;
+    width: 100%;
+    height: 100%;
+}
+
+.item:hover {
+    transform: scale(1.2);
+}
+
+.item li a, .item2 li a {
+    font-size: medium;
+    color: #674E39;
+}
+
+.item li a:hover, .item2 li a:hover {
+    color: #222421;
+}
+
+dl {
+    font-size: 0;
+}
+
+dd, dl {
+    margin: 0;
+}
+
+dt, dd {
+    font-size: xx-small;
+    display: inline-block;
+}
+
+dt {
+    font-weight: bold;
+}
+
+/* charts & artist tables
+--------------------------------------------*/
+
+table {
+    text-align: center;
+    margin-top: 2%;
+    width: 100%;
+    height: auto;
+    padding: 0;
+}
+
+table.charts {
+    font-size: x-small;
+}
+
+table.artist {
+    font-size: xx-small;
+}
+
+abbr {
+    text-decoration: none;
+    cursor: auto;
+}
+
+/* artist & album detail
+--------------------------------------------*/
+
+.container2 {
+    grid: auto-flow 1fr / 1fr 1fr 1fr;
+}
+
+.container3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: flex-start;
+    justify-items: flex-start;
+    align-items: flex-start;
+    column-gap: 2%;
+}
+
+.item2 {
+    flex-basis: 40%;
+}
+
+.item3 {
+    flex-basis: 60%;
+}
+
+img.album {
+    width: 90%;
+    height: auto;
+    max-width: min-content ;
+}
+
+img.artist {
+    width: 90%;
+    height: auto;
+    max-width: min-content;
+}
+
+h2.artist, h2.album {
+    font-size: xx-large;
+    text-align: center;
+    padding: 0;
+    margin: 5px;
+}
+
+h3.artist, h3.album {
+    margin: 1% 0 2%;
+    font-size: large;
+}
+
+h2 + div {
+    display: inline-block;
+}
+
+div + dl dt, div + dl dd {
+    background-color: rgba(232, 242, 244, 0.8);
+    font-size: medium;
+}
+
+h3 + ul {
+    padding: 0;
+    margin: 5px 0 0 0;
+}
+
+h3 + ul li > a , dd > a {
+    color: #674E39;
+    text-align: center;
+    text-decoration: none;
+}
+
+h3 + ul li > a:hover , dd > a:hover {
+    color: #C48066;
+}
+
+/* Pagination
+--------------------------------------------*/
+
+.pagination {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.page-links {
+    background-color: rgba(232, 242, 244, 0.8);
+    padding: 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #674E39;
+}
+
+.pagination a:hover {
+    color: #C48066;
+}
+
+/* Responsive styles
+--------------------------------------------*/
+
+@media screen and (max-width: 500px){
+
+    /*  body
+    --------------------------------------------*/
+
+    body {
+        padding: 8px;
+        color: #110D10;
+    }
+
+    /* header
+    --------------------------------------------*/
+
+    header a {
+        color: #110D10;
+    }
+
+    /* website name
+    --------------------------------------------*/
+
+    .web-name {
+        margin-left: 3vw;
+        font-size: 36px;
+    }
+
+    /* menu icon
+    --------------------------------------------*/
+
+    .icon {
+        width: 28px;
+        height: 28px;
+    }
+    
+    /* nav bar
+    --------------------------------------------*/
+
+    .bi.bi-list {
+        font-size: 28px;
+        color: #110D10;
+    }
+
+    .navbar {
+        padding-top: 7px;
+    }
+
+    .navbar li {
+        display: none;
+    }
+
+    .navbar li a {
+        padding: 12px;
+    }
+
+    .navbar a.icon {
+        float: right;
+        display: block;
+    }
+
+    .navbar.responsive {
+        position: relative;
+    }
+
+    .navbar.responsive a.icon {
+        position: absolute;
+        right: 0;
+        top: 7px;
+    }
+
+    .navbar.responsive ul {
+        margin-top: 24px;
+    }
+
+    .navbar.responsive li {
+        clear: both;
+        display: block;
+        text-align: left;
+        width: 5%;
+    }
+
+    .navbar li a:hover {
+        color: #B83118;
+    }
+
+    /* content
+    --------------------------------------------*/
+
+    a, dd a {
+        color: #110D10;
+    }
+
+    section {
+        position: relative;
+    }
+
+    .container3 {
+        flex-direction: column;
+    }
+    
+    h2 span, h3 span, p span, .backg {
+        background-color: rgba(80, 157, 172, 0.8);
+    }
+
+    div + dl dt, div + dl dd {
+        background-color: rgba(80, 157, 172, 0.8);
+    }
+
+    .container, .container2, .container4 {
+        grid: auto-flow 1fr / 1fr 1fr;
+        gap: 1% 1%;
+    }
+
+    .item {
+        background-color: rgba(80, 157, 172, 0.8);
+    }
+
+    .item > ul > li > strong > a {
+        color: #261310;
+    }
+
+    .item > ul > li > strong > a:hover , dd a:hover{
+        color: #B83118;
+    }
+
+    /* Pagination
+    --------------------------------------------*/
+    .page-links {
+        background-color: rgba(80, 157, 172, 0.8);
+    }
+
+    .pagination a {
+        color: #261310;
+    }
+
+    .pagination a:hover {
+        color: #B83118;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .navbar.responsive {
+        background-color: rgba(80, 157, 172, 0.8);
+    }
+}
